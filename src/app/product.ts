@@ -8,6 +8,7 @@ export type Product = {
   headingText1: string;
   headingText2: string;
   headingText3: string;
+  coverImage: string;
 };
 
 export const products: Product[] = [
@@ -21,6 +22,7 @@ export const products: Product[] = [
     headingText1: 'サンプルテキスト',
     headingText2: 'サンプルテキスト',
     headingText3: 'サンプルテキスト',
+    coverImage: './assets/img/phone-cover.jpg',
   },
   {
     name: 'Phone Mini',
@@ -32,6 +34,7 @@ export const products: Product[] = [
     headingText1: 'サンプルテキスト',
     headingText2: 'サンプルテキスト',
     headingText3: 'サンプルテキスト',
+    coverImage: './assets/img/phone-cover.jpg',
   },
   {
     name: 'Phone Standard',
@@ -43,6 +46,7 @@ export const products: Product[] = [
     headingText1: 'サンプルテキスト',
     headingText2: 'サンプルテキスト',
     headingText3: 'サンプルテキスト',
+    coverImage: './assets/img/phone-cover.jpg',
   },
   {
     name: 'Phone Special',
@@ -54,5 +58,6 @@ export const products: Product[] = [
     headingText1: 'サンプルテキスト',
     headingText2: 'サンプルテキスト',
     headingText3: 'サンプルテキスト',
+    coverImage: './assets/img/phone-cover.jpg',
   },
 ];
