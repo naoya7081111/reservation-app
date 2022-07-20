@@ -1,9 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const { DB_URI } = require("./config/dev");
+const { DB_URI } = require("./config");
 const SampleDB = require("./sample-db");
 
 const productRoutes = require("./route/products");
+const path = require("path");
 
 mongoose
   .connect(DB_URI, {
@@ -11,13 +12,23 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
-    const sampleDb = new SampleDB();
-    sampleDb.initDb();
+    if (process.env.NODE_ENV !== "production") {
+      const sampleDb = new SampleDB();
+      // sampleDb.initDb();
+    }
   });
 
 const app = express();
 
 app.use("/api/v1/products", productRoutes);
+
+if (process.env.NODE_ENV === "production") {
+  const appPath = path.join(__dirname, "..", "dist", "reservation-app");
+  app.use(express.static(appPath));
+  app.get("*", function (req, res) {
+    res.sendFile(path.resolve(appPath, "index.html"));
+  });
+}
 
 const port = process.env.port || "3001";
 
